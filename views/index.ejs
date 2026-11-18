@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-brand">
+            <img src="/images/db_logo.png" alt="DB Financial Services Logo" class="site-logo">
+
+            <div class="header-title">
+                DB Financial Services
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="home-content">
+        <h1>Welcome to DB Financial Services!</h1>
+
+        <p>
+            A user-friendly platform that allows you to manage your finances with ease.
+            Our goal is to provide you with the tools and resources you need to make
+            informed financial decisions and achieve your financial goals.
+        </p>
+    </main>
+
+</body>
 </html>
