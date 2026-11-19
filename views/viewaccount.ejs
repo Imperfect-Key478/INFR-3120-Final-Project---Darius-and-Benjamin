@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,27 +6,61 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>  
-  <header class="site-header">
-    <div class="header-brand">
-        <img src="/images/db_logo.png" alt="DB Financial Services Logo" class="site-logo">
+<body>
 
-        <div class="header-title">
-            DB Financial Services
+    <header class="site-header">
+        <div class="header-brand">
+            <img src="/images/db_logo.png" alt="DB Financial Services Logo" class="site-logo">
+
+            <div class="header-title">
+                DB Financial Services
+            </div>
         </div>
-    </div>
 
-    <nav class="main-nav">
-        <a href="/">Home</a>
-        <a href="/aboutus">About Us</a>
-        <a href="/contact">Contact</a>
-        <a href="/newaccount">New Account</a>
-        <a href="/viewaccount">View Accounts</a>
-    </nav>
-    <p>
-        View your account(s) here! You also have the option to delete your account(s) if 
-        you wish. Please note that deleting an account is a permanent action and cannot be 
-        undone. If you have any questions or concerns, please contact our support team for 
-        assistance.
-    </p>
-  </header>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="/aboutus">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/newaccount">New Account</a>
+            <a href="/viewaccount">View Accounts</a>
+        </nav>
+    </header>
+
+    <main class="account-list-container">
+        <h2>Your Accounts</h2>
+
+        <% if (accounts.length > 0) { %>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account Holder</th>
+                        <th>Account Type</th>
+                        <th>Opening Balance</th>
+                        <th>Date Created</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% accounts.forEach(function(account) { %>
+                        <tr>
+                            <td><%= account.accountName %></td>
+                            <td><%= account.accountType %></td>
+                            <td>$<%= Number(account.balance).toFixed(2) %></td>
+                            <td><%= new Date(account.createdAt).toLocaleDateString() %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+        <% } else { %>
+
+            <p>No accounts have been created yet.</p>
+            <a href="/newaccount">Create your first account</a>
+
+        <% } %>
+
+    </main>
+
+</body>
+</html>

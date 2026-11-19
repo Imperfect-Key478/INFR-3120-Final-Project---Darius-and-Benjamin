@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,26 +6,62 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>  
-  <header class="site-header">
-    <div class="header-brand">
-        <img src="/images/db_logo.png" alt="DB Financial Services Logo" class="site-logo">
+<body>
 
-        <div class="header-title">
-            DB Financial Services
+    <header class="site-header">
+        <div class="header-brand">
+            <img src="/images/db_logo.png" alt="DB Financial Services Logo" class="site-logo">
+
+            <div class="header-title">
+                DB Financial Services
+            </div>
         </div>
-    </div>
-    <h1>
-        Create a New Account here! Please fill out the form below to get started. Our platform 
-        is designed to make managing your finances simple and efficient. We look forward to 
-        helping you achieve your financial goals.
-    </h1>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="/aboutus">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/newaccount">New Account</a>
+            <a href="/viewaccount">View Accounts</a>
+        </nav>
+    </header>
+
+    <main class="account-form-container">
+        <h2>Account Information</h2>
+
+        <form action="/newaccount" method="POST">
+
+            <label for="accountName">Account Holder Name:</label>
+            <input
+                type="text"
+                id="accountName"
+                name="accountName"
+                placeholder="Enter account holder name"
+                required
+            >
+
+            <label for="accountType">Account Type:</label>
+            <select id="accountType" name="accountType" required>
+                <option value="">Select Account Type</option>
+                <option value="Chequing">Chequing</option>
+                <option value="Savings">Savings</option>
+                <option value="Business">Business</option>
+            </select>
+
+            <label for="balance">Opening Balance ($):</label>
+            <input
+                type="number"
+                id="balance"
+                name="balance"
+                placeholder="Enter opening balance"
+                min="0"
+                step="0.01"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+
+        </form>
+    </main>
+
 </body>
-    <nav class="main-nav">
-        <a href="/">Home</a>
-        <a href="/aboutus">About Us</a>
-        <a href="/contact">Contact</a>
-        <a href="/newaccount">New Account</a>
-        <a href="/viewaccount">View Accounts</a>
-    </nav>
-  </header>
+</html>
