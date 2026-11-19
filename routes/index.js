@@ -56,6 +56,54 @@ router.get('/viewaccount', async function(req, res, next) {
     }
 });
 
+// Edit Account Page
+router.get('/editaccount/:id', async function(req, res, next) {
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).send('Invalid account ID');
+        }
+
+        const account = await req.db.collection('accounts').findOne({
+            _id: new ObjectId(req.params.id)
+        });
+
+        if (!account) {
+            return res.status(404).send('Account not found');
+        }
+
+        res.render('editaccount', {
+            title: 'Edit Account',
+            account: account
+        });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Update Account
+router.post('/editaccount/:id', async function(req, res, next) {
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).send('Invalid account ID');
+        }
+
+        const updatedAccount = {
+            accountName: req.body.accountName,
+            accountType: req.body.accountType,
+            balance: Number(req.body.balance)
+        };
+
+        await req.db.collection('accounts').updateOne(
+            { _id: new ObjectId(req.params.id) },
+            { $set: updatedAccount }
+        );
+
+        res.redirect('/viewaccount');
+    } catch (error) {
+        next(error);
+    }
+});
+
 // Delete Account
 router.post('/deleteaccount/:id', async function(req, res, next) {
     try {
