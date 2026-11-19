@@ -1,6 +1,6 @@
-
 var express = require('express');
 var router = express.Router();
+const { ObjectId } = require('mongodb');
 
 // Home page
 router.get('/', function(req, res, next) {
@@ -51,6 +51,23 @@ router.get('/viewaccount', async function(req, res, next) {
             title: 'View Accounts',
             accounts: accounts
         });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Delete Account
+router.post('/deleteaccount/:id', async function(req, res, next) {
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).send('Invalid account ID');
+        }
+
+        await req.db.collection('accounts').deleteOne({
+            _id: new ObjectId(req.params.id)
+        });
+
+        res.redirect('/viewaccount');
     } catch (error) {
         next(error);
     }
