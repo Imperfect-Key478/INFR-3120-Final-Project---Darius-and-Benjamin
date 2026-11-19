@@ -50,10 +50,14 @@
                             <td>$<%= Number(account.balance).toFixed(2) %></td>
                             <td><%= new Date(account.createdAt).toLocaleDateString() %></td>
                             <td>
-                                <form action="/deleteaccount/<%= account._id %>" method="POST"
-                                  onsubmit="return confirm('Are you sure you want to delete this account?');">
-                                 <button type="submit">Delete</button>
-                                 </form>
+                             <a href="/editaccount/<%= account._id %>">
+                              <button type="button">Edit</button>
+                              </a>
+
+                              <form action="/deleteaccount/<%= account._id %>" method="POST"
+                              onsubmit="return confirm('Are you sure you want to delete this account?');">
+                              <button type="submit">Delete</button>
+                             </form>
                             </td>
                         </tr>
                     <% }); %>
