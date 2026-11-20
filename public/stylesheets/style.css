@@ -290,3 +290,33 @@ footer p {
         white-space: nowrap;
     }
 }
+
+.account-actions {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.account-actions form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.account-actions .action-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.account-actions .action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 38px;
+    padding: 0;
+    margin: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+}
